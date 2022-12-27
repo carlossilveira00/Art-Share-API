@@ -18,6 +18,9 @@ gem 'devise'
 # Devise-jwt to work with devise with tokens.
 gem 'devise-jwt'
 
+#Gem to Serialize JSON
+gem 'blueprinter'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
