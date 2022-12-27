@@ -130,6 +130,7 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.10-arm64-darwin)
       racc (~> 1.4)
+    oj (3.13.23)
     orm_adapter (0.5.0)
     puma (5.6.5)
       nio4r (~> 2.0)
@@ -197,6 +198,7 @@ DEPENDENCIES
   debug
   devise
   devise-jwt
+  oj
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.4)
