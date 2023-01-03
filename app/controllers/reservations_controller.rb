@@ -1,8 +1,20 @@
 class ReservationsController < ApplicationController
   def index
-    @reservations = Reservation.all
+    @reservations = Reservation.includes(:item).where(user: 3)
+    @current_reservations = []
 
-    render json: ReservationBlueprint.render(@reservations)
+    @reservations.each do |reservation|
+      @current_reservations << {
+        id: reservation.id,
+        item_name: reservation.item.name,
+        starting_date: reservation.starting_date,
+        ending_date: reservation.ending_date,
+        status: reservation.status,
+        total_value: reservation.total_value
+      }
+    end
+
+    render json: ReservationBlueprint.render(@current_reservations)
   end
 
   def create
