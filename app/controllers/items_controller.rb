@@ -5,6 +5,12 @@ class ItemsController < ApplicationController
     render json: ItemBlueprint.render(@items)
   end
 
+  def user_items
+    @items = Item.where(user: params[:user_id])
+
+    render json: ItemBlueprint.render(@items)
+  end
+
   def show
     @item = Item.find(params[:id])
 

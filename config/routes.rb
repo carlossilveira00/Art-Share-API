@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/member_details', to: 'members#index'
   resources :items, only: [:index, :show, :create, :update, :destroy]
   resources :reservations, only: [:index, :create, :destroy]
+  get '/completed_reservations', to: "reservations#completed_reservations"
+  get '/user_items', to: "items#user_items"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
