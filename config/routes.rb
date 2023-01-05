@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   }
 
   get '/member_details', to: 'members#index'
+  post '/update_avatar/:id', to: 'members#update_avatar'
   resources :items, only: [:index, :show, :create, :update, :destroy]
   resources :reservations, only: [:index, :create, :destroy]
   get '/completed_reservations', to: "reservations#completed_reservations"
