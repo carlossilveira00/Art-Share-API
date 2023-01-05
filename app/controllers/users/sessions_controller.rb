@@ -10,7 +10,7 @@ class Users::SessionsController < Devise::SessionsController
       status: {
         code: 200,
         message: 'User signed in successfully!',
-        data: current_user
+        data: {user: current_user, user_avatar: current_user.photo.url}
       }, code: :ok
     }
   end
