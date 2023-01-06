@@ -18,8 +18,10 @@ class ItemsController < ApplicationController
   end
 
   def create
+    item_photos = params[:photos]
+    debugger
     @item = Item.new(item_params)
-
+    @item.update(photos: item_photos)
     if @item.save
       render json: ItemBlueprint.render(@item)
     else
@@ -60,6 +62,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :category, :current_situation, :location, :user_id, :image_url, :pricem, photos: [])
+    params.require(:item).permit(:name, :description, :category, :current_situation, :location, :user_id, :price)
   end
 end
