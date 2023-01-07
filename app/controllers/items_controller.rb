@@ -2,6 +2,11 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all
 
+    @items.each do |item|
+      # Set the first photo from the item photos as the image_url to be displayed in the home page.
+      item.image_url = item.photos[0].url if item.photos.attached?
+    end
+
     render json: ItemBlueprint.render(@items)
   end
 
@@ -13,8 +18,11 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    item_photos_urls = []
 
-    render json: ItemBlueprint.render(@item)
+    @item.photos.each { |photo| item_photos_urls << photo.url }
+
+    render json: {item: @item, photos_urls: item_photos_urls }
   end
 
   def create
