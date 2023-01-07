@@ -18,8 +18,11 @@ class ItemsController < ApplicationController
   end
 
   def create
-    item_photos = params[:photos]
-    debugger
+    item_photos = []
+    params[:photos].each do |photo|
+      item_photos << photo[1]
+    end
+
     @item = Item.new(item_params)
     @item.update(photos: item_photos)
     if @item.save
